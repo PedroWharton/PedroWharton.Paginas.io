@@ -1,188 +1,80 @@
-img{
-  pointer-events: none;
+a {
+  text-decoration: none;
+  padding-right: 12px;
+  font-family: Lexend;
+  font-weight: 400;
+  font-size: 16px;
 }
 
-
-
-.u-section-1 .u-sheet-1 {
-  min-height: 648px;
+header {
+  margin: 0;
+  width: 100%;
+  padding: 12px;
+  background-color: aliceblue;
 }
 
-.u-section-1 .u-image-1 {
-  height: 632px;
-  width: 632px;
-  background-image: url("images/MG_0195_Piel_Rostro_Final2.jpg");
-  background-position: 50% 0%;
-  margin: 8px auto 0 -21px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.u-section-1 .u-group-1 {
-  width: 476px;
-  min-height: 648px;
-  background-image: none;
+.logo {
+  max-width: 160px;
+}
+
+img {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: aqua;
+}
+.nav-bar {
+  padding: 8px;
+  margin-right: 16px;
+}
+
+.boton {
+  padding: 12px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-family: Lexend;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aliceblue;
+}
+
+.footer-logo {
+  max-width: 160px;
+}
+
+h4 {
+  margin-right: 16px;
+  font-family: Lexend;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.photo-grid {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.photo-grid img {
+  width: 100%;
   height: auto;
-  margin: -648px 0 8px auto;
-}
-
-.u-section-1 .u-container-layout-1 {
-  padding: 40px 0;
-}
-
-.u-section-1 .u-image-2 {
-  height: 206px;
-  object-position: 75.76% 53.7%;
-  width: 479px;
-  margin: 43px auto 0 -21px;
-}
-
-.u-section-1 .u-text-1 {
-  font-size: 1.5rem;
-  font-weight: normal;
-  width: 348px;
-  margin: 19px auto 0;
-}
-
-.u-section-1 .u-btn-1 {
-  border-style: solid;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0px;
-  margin: 12px auto 0;
-  padding: 31px 92px 32px 91px;
-}
-
-.u-section-1 .u-social-icons-1 {
-  white-space: nowrap;
-  height: 32px;
-  min-height: 16px;
-  width: 158px;
-  min-width: 94px;
-  margin: 19px auto 0;
-}
-
-.u-section-1 .u-icon-1 {
-  height: 100%;
-}
-
-.u-section-1 .u-icon-2 {
-  height: 100%;
-}
-
-.u-section-1 .u-icon-3 {
-  height: 100%;
-}
-
-.u-section-1 .u-icon-4 {
-  height: 100%;
-}
-
-@media (max-width: 1199px) {
-  .u-section-1 .u-sheet-1 {
-    min-height: 664px;
-  }
-
-  .u-section-1 .u-image-1 {
-    height: 540px;
-    width: 540px;
-    margin-top: 49px;
-    margin-left: -16px;
-  }
-
-  .u-section-1 .u-group-1 {
-    width: 393px;
-    margin-top: -581px;
-    height: auto;
-  }
-
-  .u-section-1 .u-image-2 {
-    margin-top: 19px;
-    margin-left: -64px;
-  }
-
-  .u-section-1 .u-text-1 {
-    margin-top: 43px;
-  }
-}
-
-@media (max-width: 991px) {
-  .u-section-1 .u-sheet-1 {
-    min-height: 1412px;
-  }
-
-  .u-section-1 .u-image-1 {
-    height: 674px;
-    width: 674px;
-    margin-top: 62px;
-    margin-left: auto;
-  }
-
-  .u-section-1 .u-group-1 {
-    margin-top: 20px;
-    margin-right: auto;
-  }
-
-  .u-section-1 .u-container-layout-1 {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-
-  .u-section-1 .u-image-2 {
-    margin-left: -62px;
-  }
-}
-
-@media (max-width: 767px) {
-  .u-section-1 .u-sheet-1 {
-    min-height: 1278px;
-  }
-
-  .u-section-1 .u-image-1 {
-    height: 540px;
-    width: 540px;
-  }
-
-  .u-section-1 .u-image-2 {
-    margin-top: 23px;
-    margin-left: -66px;
-  }
-
-  .u-section-1 .u-text-1 {
-    margin-top: 39px;
-  }
-}
-
-@media (max-width: 575px) {
-  .u-section-1 .u-sheet-1 {
-    min-height: 910px;
-  }
-
-  .u-section-1 .u-image-1 {
-    height: 340px;
-    width: 340px;
-    margin-top: 9px;
-  }
-
-  .u-section-1 .u-group-1 {
-    min-height: 532px;
-    margin-bottom: 9px;
-    margin-right: initial;
-    margin-left: initial;
-    width: auto;
-  }
-
-  .u-section-1 .u-container-layout-1 {
-    padding-bottom: 24px;
-  }
-
-  .u-section-1 .u-image-2 {
-    height: 146px;
-    width: 340px;
-    margin-top: 29px;
-    margin-left: -20px;
-  }
-
-  .u-section-1 .u-text-1 {
-    width: 340px;
-    margin-top: 33px;
-  }
+  object-fit: cover;
 }
