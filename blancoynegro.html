@@ -362,25 +362,59 @@
           e.preventDefault();
         }
       });
-      // Prevent touch hold on mobile
+      // Modified touch event handlers
+      let touchStartTime;
+      let touchTimeout;
+
       document.addEventListener(
         "touchstart",
         function (e) {
           if (e.target.tagName === "IMG") {
-            e.preventDefault();
+            touchStartTime = new Date().getTime();
+
+            // Clear any existing timeout
+            if (touchTimeout) {
+              clearTimeout(touchTimeout);
+            }
+
+            // Set a timeout for long press
+            touchTimeout = setTimeout(() => {
+              e.preventDefault();
+            }, 200); // Prevent long press after 200ms
           }
         },
         { passive: false }
       );
 
-      // Prevent touch end
       document.addEventListener("touchend", function (e) {
+        if (e.target.tagName === "IMG") {
+          // Clear the timeout
+          if (touchTimeout) {
+            clearTimeout(touchTimeout);
+          }
+
+          // Calculate touch duration
+          const touchDuration = new Date().getTime() - touchStartTime;
+
+          // If it's a quick tap (less than 200ms), allow the click event
+          if (touchDuration < 200) {
+            // Don't prevent default for quick taps
+            return true;
+          } else {
+            // Prevent default for long press
+            e.preventDefault();
+          }
+        }
+      });
+
+      // Keep your existing right-click prevention
+      document.addEventListener("contextmenu", function (e) {
         if (e.target.tagName === "IMG") {
           e.preventDefault();
         }
       });
 
-      // Additional protection for iOS
+      // Keep your existing gesturestart prevention
       document.addEventListener("gesturestart", function (e) {
         if (e.target.tagName === "IMG") {
           e.preventDefault();
