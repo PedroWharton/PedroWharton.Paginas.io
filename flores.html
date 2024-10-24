@@ -64,10 +64,16 @@
         cursor: pointer;
       }
 
-      footer {
+      .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.3);
       }
 
       footer img {
@@ -205,6 +211,8 @@
           <li><a href="paisajes">Paisajes</a></li>
           <li><a href="flores">Flores</a></li>
           <li><a href="blancoynegro">Blanco y Negro</a></li>
+          <li><a href="ciudades">Ciudades</a></li>
+          <li><a href="retratos">Retratos</a></li>
           <li>
             <a class="boton-a" href="contacto"
               ><button class="boton">Contacto</button></a
@@ -298,6 +306,12 @@
       <img class="modal-content" id="modalImage" />
       <div id="caption"></div>
     </div>
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="images/Ramitalogoceci.png" alt="Footer Logo" />
+      </div>
+      <h4>Copyright © 2024 Cecilia Brein | Todos los derechos reservados.</h4>
+    </footer>
 
     <script>
       function openModal(imgSrc, imgAlt) {
@@ -326,10 +340,4 @@
       }
     </script>
   </body>
-  <footer>
-    <div class="footer-logo">
-      <img src="images/Ramitalogoceci.png" alt="" />
-    </div>
-    <h4>Copyright © 2024 Cecilia Brein | Todos los derechos reservados.</h4>
-  </footer>
 </html>
