@@ -382,7 +382,7 @@
           const touchDuration = new Date().getTime() - touchStartTime;
 
           // If it's a quick tap (less than 200ms), allow the click event
-          if (touchDuration < 200) {
+          if (touchDuration < 100) {
             // Don't prevent default for quick taps
             return true;
           } else {
