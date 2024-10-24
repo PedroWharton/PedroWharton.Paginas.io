@@ -6,7 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/images/Logo_Completo_negro.png" />
     <style>
+      /* Import fonts */
       @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap");
+
+      /* Global styles */
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Lexend", sans-serif;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Header styles */
       .header {
         display: flex;
         justify-content: space-between;
@@ -21,11 +36,7 @@
         max-width: 120px;
       }
 
-      .logo img {
-        width: 100%;
-        height: auto;
-      }
-
+      /* Navigation styles */
       .nav-bar ul {
         display: flex;
         list-style-type: none;
@@ -34,9 +45,6 @@
         align-items: center;
       }
 
-      .boton-a {
-        padding: 0 !important;
-      }
       .nav-bar a {
         text-decoration: none;
         padding: 12px;
@@ -45,6 +53,10 @@
         font-size: 20px;
         display: inline-block;
         margin-right: 4px;
+      }
+
+      .boton-a {
+        padding: 0;
       }
 
       .boton {
@@ -64,6 +76,66 @@
         cursor: pointer;
       }
 
+      /* Main content styles */
+      .main-container {
+        width: 100%;
+      }
+
+      .contact {
+        width: 90%;
+        margin: auto;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .profile-img {
+        max-width: 50%;
+      }
+
+      .description {
+        padding: 0 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .description h4 {
+        margin-top: 0;
+      }
+
+      .statement {
+        width: 90%;
+        margin: auto;
+        padding: 16px;
+      }
+
+      /* Social links styles */
+      .social-links {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .social-links a {
+        color: black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: opacity 0.3s ease;
+      }
+
+      .social-links a:hover {
+        opacity: 0.7;
+      }
+
+      .social-links svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* Footer styles */
       .footer {
         position: fixed;
         bottom: 0;
@@ -76,21 +148,17 @@
         background-color: rgba(255, 255, 255, 0.3);
       }
 
-      footer img {
-        width: 100%;
-      }
-
       .footer-logo {
         max-width: 160px;
       }
 
-      h4 {
-        margin-right: 16px;
-        font-family: Lexend;
+      .footer h4 {
+        margin: 0;
         font-weight: 600;
         font-size: 16px;
       }
 
+      /* Media Queries */
       @media screen and (max-width: 768px) {
         .header {
           flex-direction: column;
@@ -126,102 +194,84 @@
           top: 20px;
           right: 20px;
         }
-      }
-      body {
-        margin: 0;
-        box-sizing: border-box;
-        font-family: "Lexend", sans-serif;
-      }
-      .photo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        grid-gap: 20px;
-        padding: 24px;
-      }
-      .photo-grid img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        cursor: pointer;
-        transition: transform 0.3s ease;
-      }
-      .photo-grid img:hover {
-        transform: scale(1.05);
-      }
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.9);
-      }
-      .modal-content {
-        margin: auto;
-        margin-top: 120px;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        max-height: 80vh;
-        object-fit: contain;
-      }
-      .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-      }
-      .close:hover,
-      .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-      }
 
-      @media screen and (max-width: 700px) {
-        .modal-content {
-          width: 100%;
+        .footer {
+          position: relative;
+          flex-direction: column;
+          align-items: flex-start;
         }
-      }
 
-      @media screen and (max-width: 500px) {
-        .photo-grid {
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        .footer-logo {
+          margin-bottom: 10px;
         }
-        .photo-grid img {
-          height: 150px;
+
+        .footer h4 {
+          font-size: 14px;
+        }
+        .contact {
+          flex-direction: column;
+          padding: 12px;
+          gap: 24px;
+        }
+
+        .profile-img {
+          max-width: 100%;
+        }
+
+        .description {
+          padding: 0;
+          gap: 20px;
+        }
+
+        .description h4 {
+          font-size: 24px;
+          margin-bottom: 12px;
+        }
+
+        .description p {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+
+        .social-links {
+          margin-bottom: 12px;
+        }
+
+        .social-links a {
+          font-size: 14px;
+        }
+
+        .statement {
+          padding: 12px;
         }
       }
     </style>
   </head>
-  <header>
-    <div class="header">
-      <div class="logo">
-        <a href="/"><img src="images/Logo_Completo_negro.png" alt="Logo" /></a>
+  <body>
+    <header>
+      <div class="header">
+        <div class="logo">
+          <a href="/"
+            ><img src="images/Logo_Completo_negro.png" alt="Logo"
+          /></a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav class="nav-bar">
+          <ul>
+            <li><a href="paisajes">Paisajes</a></li>
+            <li><a href="flores">Flores</a></li>
+            <li><a href="blancoynegro">Blanco y Negro</a></li>
+            <li><a href="ciudades">Ciudades</a></li>
+            <li><a href="retratos">Retratos</a></li>
+            <li>
+              <a class="boton-a" href="contacto"
+                ><button class="boton">Contacto</button></a
+              >
+            </li>
+          </ul>
+        </nav>
       </div>
-      <div class="menu-icon" onclick="toggleMenu()">☰</div>
-      <nav class="nav-bar">
-        <ul>
-          <li><a href="paisajes">Paisajes</a></li>
-          <li><a href="flores">Flores</a></li>
-          <li><a href="blancoynegro">Blanco y Negro</a></li>
-          <li><a href="ciudades">Ciudades</a></li>
-          <li><a href="retratos">Retratos</a></li>
-          <li>
-            <a class="boton-a" href="contacto"
-              ><button class="boton">Contacto</button></a
-            >
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    </header>
 
     <main class="main-container">
       <div class="contact">

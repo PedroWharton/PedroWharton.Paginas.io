@@ -5,13 +5,26 @@
   <link rel="icon" href="/images/Logo_Completo_negro.png" />
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap");
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(
+        255,
+        255,
+        255,
+        0
+      ); /* semi-transparent background */
+    }
+
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 24px;
-      background-color: aliceblue;
+      padding: 12px 24px;
       box-sizing: border-box;
     }
 
@@ -22,6 +35,10 @@
     .logo img {
       width: 100%;
       height: auto;
+    }
+
+    body img {
+      width: 100%;
     }
 
     .nav-bar ul {
@@ -62,37 +79,14 @@
       cursor: pointer;
     }
 
-    .footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    footer img {
-      width: 100%;
-    }
-
-    .footer-logo {
-      max-width: 160px;
-    }
-
-    h4 {
-      margin-right: 16px;
-      font-family: Lexend;
-      font-weight: 600;
-      font-size: 16px;
-    }
-
     @media screen and (max-width: 768px) {
       .header {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .main-image {
+        overflow: hidden;
       }
 
       .logo {
@@ -102,6 +96,7 @@
       .nav-bar {
         width: 100%;
         display: none;
+        background-color: (239, 239, 240, 0.5);
       }
 
       .nav-bar.active {
@@ -196,8 +191,71 @@
         height: 150px;
       }
     }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .full-height {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .full-height > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(
+        255,
+        255,
+        255,
+        0.3
+      ); /* semi-transparent background */
+    }
+
+    .footer-logo {
+      max-width: 160px;
+    }
+
+    .footer h4 {
+      margin: 0;
+      font-family: Lexend, sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-logo {
+        margin-bottom: 10px;
+      }
+
+      .footer h4 {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
+
 <header>
   <div class="header">
     <div class="logo">
