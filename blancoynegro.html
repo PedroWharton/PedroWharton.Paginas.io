@@ -362,6 +362,30 @@
           e.preventDefault();
         }
       });
+      // Prevent touch hold on mobile
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          if (e.target.tagName === "IMG") {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      // Prevent touch end
+      document.addEventListener("touchend", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
+
+      // Additional protection for iOS
+      document.addEventListener("gesturestart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
     </script>
   </body>
 </html>
