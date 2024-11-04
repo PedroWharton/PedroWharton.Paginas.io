@@ -639,6 +639,16 @@
         modal.style.display = "none";
       }
 
+      function toggleMenu() {
+        var navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+      }
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
+
       window.onclick = function (event) {
         var modal = document.getElementById("imageModal");
         if (event.target == modal) {
