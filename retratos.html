@@ -349,26 +349,13 @@
     </footer>
 
     <script>
-      // Store whether we're in a click/tap event
-      let isClickEvent = false;
-      let touchStartTime = 0;
-      let touchStartY = 0;
-      let isTouchMove = false;
-
-      // Handle modal opening
       function openModal(imgSrc, imgAlt) {
-        if (!isTouchMove) {
-          isClickEvent = true;
-          var modal = document.getElementById("imageModal");
-          var modalImg = document.getElementById("modalImage");
-          var captionText = document.getElementById("caption");
-          modal.style.display = "block";
-          modalImg.src = imgSrc;
-          captionText.innerHTML = imgAlt;
-          setTimeout(() => {
-            isClickEvent = false;
-          }, 100);
-        }
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        var captionText = document.getElementById("caption");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+        captionText.innerHTML = imgAlt;
       }
 
       function closeModal() {
@@ -376,91 +363,77 @@
         modal.style.display = "none";
       }
 
-      function toggleMenu() {
-        var navBar = document.querySelector(".nav-bar");
-        navBar.classList.toggle("active");
-      }
-
-      // Window click handler for modal
       window.onclick = function (event) {
         var modal = document.getElementById("imageModal");
         if (event.target == modal) {
           modal.style.display = "none";
         }
       };
-
-      // Prevent right click
+      function toggleMenu() {
+        var navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+      }
       document.addEventListener("contextmenu", function (e) {
         if (e.target.tagName === "IMG") {
           e.preventDefault();
-          return false;
         }
       });
+      // Modified touch event handlers
+      let touchStartTime;
+      let touchTimeout;
 
-      // Track touch start
       document.addEventListener(
         "touchstart",
         function (e) {
           if (e.target.tagName === "IMG") {
-            touchStartTime = Date.now();
-            touchStartY = e.touches[0].clientY;
-            isTouchMove = false;
-          }
-        },
-        { passive: true }
-      );
+            touchStartTime = new Date().getTime();
 
-      // Handle touch move
-      document.addEventListener(
-        "touchmove",
-        function (e) {
-          if (e.target.tagName === "IMG") {
-            const touchCurrentY = e.touches[0].clientY;
-            const deltaY = Math.abs(touchCurrentY - touchStartY);
-
-            // If the user has moved their finger more than 10px, consider it a scroll
-            if (deltaY > 10) {
-              isTouchMove = true;
+            // Clear any existing timeout
+            if (touchTimeout) {
+              clearTimeout(touchTimeout);
             }
+
+            // Set a timeout for long press
+            touchTimeout = setTimeout(() => {
+              e.preventDefault();
+            }, 200); // Prevent long press after 200ms
           }
         },
-        { passive: true }
+        { passive: false }
       );
 
-      // Handle touch end
       document.addEventListener("touchend", function (e) {
         if (e.target.tagName === "IMG") {
-          const touchDuration = Date.now() - touchStartTime;
-          // Only prevent the default action if it's a long press and not a scroll
-          if (touchDuration > 200 && !isTouchMove) {
+          // Clear the timeout
+          if (touchTimeout) {
+            clearTimeout(touchTimeout);
+          }
+
+          // Calculate touch duration
+          const touchDuration = new Date().getTime() - touchStartTime;
+
+          // If it's a quick tap (less than 200ms), allow the click event
+          if (touchDuration < 200) {
+            // Don't prevent default for quick taps
+            return true;
+          } else {
+            // Prevent default for long press
             e.preventDefault();
-            return false;
           }
         }
-        isTouchMove = false;
       });
 
-      // Prevent keyboard shortcuts
-      document.addEventListener("keydown", function (e) {
-        if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+      // Keep your existing right-click prevention
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
           e.preventDefault();
-          return false;
         }
       });
 
-      // Prevent drag events
-      document.addEventListener("dragstart", function (e) {
+      // Keep your existing gesturestart prevention
+      document.addEventListener("gesturestart", function (e) {
         if (e.target.tagName === "IMG") {
           e.preventDefault();
-          return false;
-        }
-      });
-
-      // Prevent copy
-      document.addEventListener("copy", function (e) {
-        if (e.target.tagName === "IMG") {
-          e.preventDefault();
-          return false;
         }
       });
     </script>
