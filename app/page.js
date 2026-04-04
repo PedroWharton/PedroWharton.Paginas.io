@@ -1,7 +1,7 @@
 import HeroSection from '@/components/HeroSection';
 import CategoryGrid from '@/components/CategoryGrid';
 import { getConfiguracion, getCategorias } from '@/lib/sanity.queries';
-import { urlFor } from '@/lib/sanity.image';
+import { proxyUrl } from '@/lib/proxy-image';
 
 export const revalidate = 60;
 
@@ -12,7 +12,7 @@ export default async function HomePage() {
   ]);
 
   const heroUrl = config?.imagenHero
-    ? urlFor(config.imagenHero).width(2400).quality(85).url()
+    ? proxyUrl(config.imagenHero, { width: 2400, quality: 85 })
     : null;
 
   return (

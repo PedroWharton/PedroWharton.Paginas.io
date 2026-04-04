@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { urlFor } from '@/lib/sanity.image';
+import { proxyUrl } from '@/lib/proxy-image';
 
 function prevent(e) {
   e.preventDefault();
@@ -38,7 +38,7 @@ export default function CategoryGrid({ categorias = [] }) {
       >
         {categorias.map((cat) => {
           const coverUrl = cat.imagenPortada
-            ? urlFor(cat.imagenPortada).width(800).height(600).fit('crop').quality(80).url()
+            ? proxyUrl(cat.imagenPortada, { width: 800, quality: 80 })
             : null;
 
           return (

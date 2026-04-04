@@ -113,6 +113,9 @@ export default function ImageModal({ src, alt, onClose, onPrev, onNext, hasPrev,
         </button>
       )}
 
+      {/* Watermark */}
+      <span className="modal-watermark">© Cecilia Brein</span>
+
       {/* Image */}
       <div
         onClick={(e) => e.stopPropagation()}
