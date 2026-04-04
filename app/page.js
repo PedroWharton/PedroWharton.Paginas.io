@@ -1,0 +1,24 @@
+import HeroSection from '@/components/HeroSection';
+import CategoryGrid from '@/components/CategoryGrid';
+import { getConfiguracion, getCategorias } from '@/lib/sanity.queries';
+import { urlFor } from '@/lib/sanity.image';
+
+export const revalidate = 60;
+
+export default async function HomePage() {
+  const [config, categorias] = await Promise.all([
+    getConfiguracion().catch(() => null),
+    getCategorias().catch(() => []),
+  ]);
+
+  const heroUrl = config?.imagenHero
+    ? urlFor(config.imagenHero).width(2400).quality(85).url()
+    : null;
+
+  return (
+    <>
+      <HeroSection heroUrl={heroUrl} categorias={categorias} />
+      <CategoryGrid categorias={categorias} />
+    </>
+  );
+}
