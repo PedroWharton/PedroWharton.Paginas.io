@@ -1,6 +1,6 @@
 import { PortableText } from 'next-sanity';
 import { getConfiguracion } from '@/lib/sanity.queries';
-import { urlFor } from '@/lib/sanity.image';
+import { proxyUrl } from '@/lib/proxy-image';
 import ContactLinks from '@/components/ContactLinks';
 
 export const revalidate = 60;
@@ -22,7 +22,7 @@ export default async function ContactoPage() {
   const config = await getConfiguracion().catch(() => null);
 
   const profileUrl = config?.fotoPerfil
-    ? urlFor(config.fotoPerfil).width(800).height(1000).fit('crop').quality(85).url()
+    ? proxyUrl(config.fotoPerfil, { width: 800, quality: 85 })
     : null;
 
   return (

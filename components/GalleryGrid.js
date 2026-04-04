@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ImageModal from './ImageModal';
-import { urlFor } from '@/lib/sanity.image';
+import { proxyUrl } from '@/lib/proxy-image';
 
 function prevent(e) {
   e.preventDefault();
@@ -42,14 +42,14 @@ export default function GalleryGrid({ fotos = [] }) {
 
   const modalSrc =
     modalIndex !== null
-      ? urlFor(fotos[modalIndex].imagen).width(1600).quality(85).url()
+      ? proxyUrl(fotos[modalIndex].imagen, { width: 1200, quality: 82 })
       : null;
 
   return (
     <>
       <div className="gallery-columns">
         {fotos.map((foto, i) => {
-          const thumbUrl = urlFor(foto.imagen).width(900).quality(80).url();
+          const thumbUrl = proxyUrl(foto.imagen, { width: 900, quality: 80 });
           return (
             <div
               key={foto._id}
