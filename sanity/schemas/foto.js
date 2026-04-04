@@ -1,10 +1,12 @@
 import { defineType, defineField } from 'sanity';
+import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list';
 
 export const fotoSchema = defineType({
   name: 'foto',
   title: 'Foto',
   type: 'document',
   fields: [
+    orderRankField({ type: 'foto' }),
     defineField({
       name: 'titulo',
       title: 'Título (opcional)',
@@ -15,9 +17,7 @@ export const fotoSchema = defineType({
       name: 'imagen',
       title: 'Imagen',
       type: 'image',
-      options: {
-        hotspot: true,
-      },
+      options: { hotspot: true },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -40,20 +40,8 @@ export const fotoSchema = defineType({
       description: 'Las fotos destacadas pueden aparecer en la página principal.',
       initialValue: false,
     }),
-    defineField({
-      name: 'orden',
-      title: 'Orden dentro de la categoría',
-      type: 'number',
-      description: 'Número menor aparece primero. Deja en blanco para orden automático.',
-    }),
   ],
-  orderings: [
-    {
-      title: 'Orden manual',
-      name: 'ordenManual',
-      by: [{ field: 'orden', direction: 'asc' }],
-    },
-  ],
+  orderings: [orderRankOrdering],
   preview: {
     select: {
       title: 'titulo',
