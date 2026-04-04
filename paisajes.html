@@ -1,0 +1,751 @@
+<!DOCTYPE html5>
+<html lang="en">
+  <head>
+    <title>Paisajes</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/Logo_Completo_negro.png" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap");
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 24px;
+        background-color: aliceblue;
+        box-sizing: border-box;
+      }
+
+      .logo {
+        max-width: 120px;
+      }
+
+      .logo img {
+        width: 100%;
+        height: auto;
+      }
+
+      .nav-bar ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      .boton-a {
+        padding: 0 !important;
+      }
+      .nav-bar a {
+        text-decoration: none;
+        padding: 12px;
+        color: black;
+        font-weight: 400;
+        font-size: 20px;
+        display: inline-block;
+        margin-right: 4px;
+      }
+
+      .boton {
+        padding: 16px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+      }
+
+      footer img {
+        width: 100%;
+      }
+
+      .footer-logo {
+        max-width: 160px;
+      }
+
+      h4 {
+        margin-right: 16px;
+        font-family: Lexend;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo {
+          max-width: 80px;
+        }
+
+        .nav-bar {
+          width: 100%;
+          display: none;
+        }
+
+        .nav-bar.active {
+          display: block;
+        }
+
+        .nav-bar ul {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav-bar a {
+          width: 100%;
+          padding: 12px 0;
+        }
+
+        .menu-icon {
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+        }
+      }
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Lexend", sans-serif;
+      }
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
+        padding: 24px;
+      }
+      .photo-grid img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .photo-grid img:hover {
+        transform: scale(1.05);
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+      .modal-content {
+        margin: auto;
+        margin-top: 120px;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1 !important;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+      .close:hover,
+      .close:focus {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 700px) {
+        .modal-content {
+          width: 100%;
+        }
+        .photo-grid img:hover {
+          transform: none;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .photo-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        .photo-grid img {
+          height: 150px;
+        }
+      }
+    </style>
+  </head>
+  <header>
+    <div class="header">
+      <div class="logo">
+        <a href="/"><img src="images/Logo_Completo_negro.png" alt="Logo" /></a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <nav class="nav-bar">
+        <ul>
+          <li><a href="paisajes">Paisajes</a></li>
+          <li><a href="flores">Flores</a></li>
+          <li><a href="blancoynegro">Blanco y Negro</a></li>
+          <li><a href="ciudades">Ciudades</a></li>
+          <li><a href="retratos">Retratos</a></li>
+          <li>
+            <a class="boton-a" href="contacto"
+              ><button class="boton">Contacto</button></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <body>
+    <div class="photo-grid">
+      <img
+        src="images/Paisajes_1080/a_DSC0160.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ab_DSC0166-1_Transf vertical.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ac4_DSC0197-1.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ac5_DSC9958-1.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ac5_DSC9964-1.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ac_DSC0190-1b-Yuyo-IA.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ad_NOA_DSC0403-1.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ad_Noa_DSC9181-1-Final.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ad_NOA_Pano-Cilin-dsc0046-7-8-9.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ae_NOA_DSC0297-1-RotHz.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      /><img
+        src="images/Paisajes_1080/ae_NOA_IMG_3229-1-Prop-3-2.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/af_NOA_DSC0699.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/af_NOA_IMG_3016-1-Final.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ag2_NOA_DSC0064-1.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ag_NOA_DSC0066-1.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      /><img
+        src="images/Paisajes_1080/ag_NOA_DSC0209-1.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ag_NOA_DSC9526-Editar.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ai_IMG_3219-1-Filtr-Tz-Final.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ai_NOA_DSC0024-25-Pano-Cilin.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ai_NOA_DSC0534-1.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ai_NOA_Panorama_9119-a-9122_Recorte.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/aj_NOA_DSC0100-1.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/aj_NOA_DSC9141-cielo-2-rot0,6-JB.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/aj_NOA_Panorama_9273-74-Revelada-Recorte.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/ak_NOA_DSC0730-1-Prop-16x9.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      /><img
+        src="images/Paisajes_1080/c_NNeuq_DSC3855-1 copia.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Cavi_DSC7030-1-Agosto-2023.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Cavi_DSC7166-1-New_ed-Ago_23.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Cavi_DSC7419-1_Volteo_cielo.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Cavi_DSC7583-1.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      /><img
+        src="images/Paisajes_1080/Cavi_DSC9922.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Cavi_Panorama_9914-15_version_2024.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/IMG_1207-1-recorte.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/IMG_1431.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/L_IMG_9827_TK9.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      /><img
+        src="images/Paisajes_1080/Limay_MG_8992-Ed_LGH_PSD.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Limay_q_IMG9_1543-1.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/m_Br_DSC0190-1-Br.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/m_Br_DSC5090-blend-web.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/m_Br_DSC5473_Color-3-NickCollec.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      /><img
+        src="images/Paisajes_1080/Mz.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Mz_MG_0041-ed_2022_Px1080.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Mz_MG_0311_ed_PhS.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/N_DSC8039-1-web-Transf.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Neuq_DSC1517-1.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Neuq_DSC1569-1.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Neuq_DSC8241-1-2023.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/NOA_DSC9447-1-JB-Final.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/NOA_DSC9523-1-Transf.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/NOA_IMG_7473-1.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Noa_IMG_7496-1.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/P_VLA_MG_0004_Recorte_mas_filtro.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/P_VLA_MG_0313-1.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Panorama_DSC1476-77.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Sj_DSC9774-Pano-18-5.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/v_DSC9894-1TK9_ed.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/V_RN_DSC1894-2-2023-web.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/VdlLR_DSC3018-1-A-recorte y cielo.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/VdRN_DSC9861-1.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/VdRN_Panorama_Valle_dela_Luna_Rojo_Traansf_y_foco_MIB.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/VRN2_IMG_1935-web.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/VRN3_DSC1933-1.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/VRn4_MG_9388_ed_2021.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/Vrn_DSC8741-1-CB-2-Abril.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/Paisajes_1080/z_DSC4991-ed_Psd_Tranfo_web.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+    </div>
+
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage" draggable="false" />
+      <div id="caption"></div>
+    </div>
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="images/Ramitalogoceci.png" alt="Footer Logo" />
+      </div>
+      <h4>Copyright © 2024 Cecilia Brein | Todos los derechos reservados.</h4>
+    </footer>
+    <script>
+      // Store whether we're in a click/tap event
+      let isClickEvent = false;
+
+      // Handle modal opening
+      function openModal(imgSrc, imgAlt) {
+        isClickEvent = true;
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        var captionText = document.getElementById("caption");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+        captionText.innerHTML = imgAlt;
+        setTimeout(() => {
+          isClickEvent = false;
+        }, 100);
+      }
+
+      function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+      }
+
+      function toggleMenu() {
+        var navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+      }
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
+
+      window.onclick = function (event) {
+        var modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      // Prevent right click
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Track touch start time for distinguishing taps from long presses
+      let touchStartTime = 0;
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          if (e.target.tagName === "IMG") {
+            touchStartTime = Date.now();
+          }
+        },
+        { passive: false }
+      );
+
+      // Handle touch end
+      document.addEventListener("touchend", function (e) {
+        if (e.target.tagName === "IMG") {
+          const touchDuration = Date.now() - touchStartTime;
+          if (touchDuration > 200) {
+            // If it's a long press
+            e.preventDefault();
+            return false;
+          }
+        }
+      });
+
+      // Additional protection for all possible download methods
+      document.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+          // Prevent Ctrl+S / Cmd+S
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Prevent drag events
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Prevent touch events that might lead to saving
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          if (e.target.tagName === "IMG" && !isClickEvent) {
+            e.preventDefault();
+            return false;
+          }
+        },
+        { passive: false }
+      );
+
+      // Prevent copy
+      document.addEventListener("copy", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Additional CSS to prevent selection and touch actions
+      const style = document.createElement("style");
+      style.textContent = `
+    img {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+    }
+    
+    img[onclick] {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+`;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>

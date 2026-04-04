@@ -1,0 +1,468 @@
+<!DOCTYPE html5>
+<html lang="en">
+  <head>
+    <title>Flores</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/Logo_Completo_negro.png" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap");
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 24px;
+        background-color: aliceblue;
+        box-sizing: border-box;
+      }
+
+      .logo {
+        max-width: 120px;
+      }
+
+      .logo img {
+        width: 100%;
+        height: auto;
+      }
+
+      .nav-bar ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      .boton-a {
+        padding: 0 !important;
+      }
+      .nav-bar a {
+        text-decoration: none;
+        padding: 12px;
+        color: black;
+        font-weight: 400;
+        font-size: 20px;
+        display: inline-block;
+        margin-right: 4px;
+      }
+
+      .boton {
+        padding: 16px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      footer img {
+        width: 100%;
+      }
+
+      .footer-logo {
+        max-width: 160px;
+      }
+
+      h4 {
+        margin-right: 16px;
+        font-family: Lexend;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .footer {
+          position: relative;
+        }
+
+        .logo {
+          max-width: 80px;
+        }
+
+        .nav-bar {
+          width: 100%;
+          display: none;
+        }
+
+        .nav-bar.active {
+          display: block;
+        }
+
+        .nav-bar ul {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav-bar a {
+          width: 100%;
+          padding: 12px 0;
+        }
+
+        .menu-icon {
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+        }
+      }
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Lexend", sans-serif;
+      }
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
+        padding: 24px;
+      }
+      .photo-grid img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .photo-grid img:hover {
+        transform: scale(1.05);
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+      .modal-content {
+        margin: auto;
+        margin-top: 120px;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1 !important;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+      .close:hover,
+      .close:focus {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 700px) {
+        .modal-content {
+          width: 100%;
+        }
+
+        .photo-grid img:hover {
+          transform: none;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .photo-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        .photo-grid img {
+          height: 150px;
+        }
+      }
+    </style>
+  </head>
+  <header>
+    <div class="header">
+      <div class="logo">
+        <a href="/"><img src="images/Logo_Completo_negro.png" alt="Logo" /></a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <nav class="nav-bar">
+        <ul>
+          <li><a href="paisajes">Paisajes</a></li>
+          <li><a href="flores">Flores</a></li>
+          <li><a href="blancoynegro">Blanco y Negro</a></li>
+          <li><a href="ciudades">Ciudades</a></li>
+          <li><a href="retratos">Retratos</a></li>
+          <li>
+            <a class="boton-a" href="contacto"
+              ><button class="boton">Contacto</button></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <body>
+    <div class="photo-grid">
+      <img
+        src="images/1080px_Flores/1_DSC9519-1 sepia.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/2_DSC9611-1_sepia-enderezar.jpg"
+        alt="Photo 2"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/3_DSC9633-1_sepia-Re-encuadre-jb copia.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/4_B&W_MJ_MG_9749.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/5_DSC1735-40_Stack_2do intento.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/6_DSC1766-1.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/7_HDR_6340_41_44_Obra_apaisada_Paso-2.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/8__DSC9232 copia.jpg"
+        alt="Photo 2"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/9_DSC3958-JB.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/9_DSC3974-JB.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/9_DSC3990-1-Rot_Hz.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/a_MG_9542.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/b_MG_9568.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/c_MG_9582.jpg"
+        alt="Photo 2"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Flores/d_MG_9570.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+    </div>
+
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage" draggable="false" />
+      <div id="caption"></div>
+    </div>
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="images/Ramitalogoceci.png" alt="Footer Logo" />
+      </div>
+      <h4>Copyright © 2024 Cecilia Brein | Todos los derechos reservados.</h4>
+    </footer>
+
+    <script>
+      // Store whether we're in a click/tap event
+      let isClickEvent = false;
+
+      // Handle modal opening
+      function openModal(imgSrc, imgAlt) {
+        isClickEvent = true;
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        var captionText = document.getElementById("caption");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+        captionText.innerHTML = imgAlt;
+        setTimeout(() => {
+          isClickEvent = false;
+        }, 100);
+      }
+
+      function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+      }
+
+      function toggleMenu() {
+        var navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+      }
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
+
+      window.onclick = function (event) {
+        var modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      // Prevent right click
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Track touch start time for distinguishing taps from long presses
+      let touchStartTime = 0;
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          if (e.target.tagName === "IMG") {
+            touchStartTime = Date.now();
+          }
+        },
+        { passive: false }
+      );
+
+      // Handle touch end
+      document.addEventListener("touchend", function (e) {
+        if (e.target.tagName === "IMG") {
+          const touchDuration = Date.now() - touchStartTime;
+          if (touchDuration > 200) {
+            // If it's a long press
+            e.preventDefault();
+            return false;
+          }
+        }
+      });
+
+      // Additional protection for all possible download methods
+      document.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+          // Prevent Ctrl+S / Cmd+S
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Prevent drag events
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Prevent touch events that might lead to saving
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          if (e.target.tagName === "IMG" && !isClickEvent) {
+            e.preventDefault();
+            return false;
+          }
+        },
+        { passive: false }
+      );
+
+      // Prevent copy
+      document.addEventListener("copy", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Additional CSS to prevent selection and touch actions
+      const style = document.createElement("style");
+      style.textContent = `
+    img {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+    }
+    
+    img[onclick] {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+`;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>

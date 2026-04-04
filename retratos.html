@@ -1,0 +1,440 @@
+<!DOCTYPE html5>
+<html lang="en">
+  <head>
+    <title>Retratos</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/Logo_Completo_negro.png" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap");
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 24px;
+        background-color: aliceblue;
+        box-sizing: border-box;
+      }
+
+      .logo {
+        max-width: 120px;
+      }
+
+      .logo img {
+        width: 100%;
+        height: auto;
+      }
+
+      .nav-bar ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      .boton-a {
+        padding: 0 !important;
+      }
+      .nav-bar a {
+        text-decoration: none;
+        padding: 12px;
+        color: black;
+        font-weight: 400;
+        font-size: 20px;
+        display: inline-block;
+        margin-right: 4px;
+      }
+
+      .boton {
+        padding: 16px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      footer img {
+        width: 100%;
+      }
+
+      .footer-logo {
+        max-width: 160px;
+      }
+
+      h4 {
+        margin-right: 16px;
+        font-family: Lexend;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo {
+          max-width: 80px;
+        }
+
+        .nav-bar {
+          width: 100%;
+          display: none;
+        }
+
+        .nav-bar.active {
+          display: block;
+        }
+
+        .nav-bar ul {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav-bar a {
+          width: 100%;
+          padding: 12px 0;
+        }
+
+        .menu-icon {
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+        }
+
+        .footer {
+          position: relative;
+        }
+      }
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Lexend", sans-serif;
+      }
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
+        padding: 24px;
+      }
+      .photo-grid img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .photo-grid img:hover {
+        transform: scale(1.05);
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+      }
+      .modal-content {
+        margin: auto;
+        margin-top: 120px;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1 !important;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+      .close:hover,
+      .close:focus {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .photo-grid img:hover {
+        transform: none;
+      }
+
+      @media screen and (max-width: 700px) {
+        .modal-content {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .photo-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        .photo-grid img {
+          height: 150px;
+        }
+      }
+    </style>
+  </head>
+  <header>
+    <div class="header">
+      <div class="logo">
+        <a href="/"><img src="images/Logo_Completo_negro.png" alt="Logo" /></a>
+      </div>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <nav class="nav-bar">
+        <ul>
+          <li><a href="paisajes">Paisajes</a></li>
+          <li><a href="flores">Flores</a></li>
+          <li><a href="blancoynegro">Blanco y Negro</a></li>
+          <li><a href="ciudades">Ciudades</a></li>
+          <li><a href="retratos">Retratos</a></li>
+          <li>
+            <a class="boton-a" href="contacto"
+              ><button class="boton">Contacto</button></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <body>
+    <div class="photo-grid">
+      <img
+        src="images/1080px_Retratos/1_DSC4119-1_JB_Px2200.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/1_DSC4703-1_Fondo verde_web.jpg"
+        alt="Photo 2"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/a_Ed_20x30_foto_57_Final.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/c_Textura_Love_4847.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/Cecilia_Brein_A-lo-Erwitt.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/Dori_2.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/DSC4594-1-JB.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/IMG_9087.jpg"
+        alt="Photo 2"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/m_MG_0054_NICKCOLL.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/m_MG_7205.jpg"
+        alt="Photo 4"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/MG_0231.jpg"
+        alt="Photo 5"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/MG_0243_ed_2-web.jpg"
+        alt="Photo 6"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/MG_8800-1_2022.jpg"
+        alt="Photo 1"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/Print_Mago_MG_0639.jpg"
+        alt="Photo 2"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/Print_MG_0623_20x30.jpg"
+        alt="Photo 3"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/Print_P&A_4Fotos_2.jpg"
+        alt="Photo 2"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+      <img
+        src="images/1080px_Retratos/web_1080_IMG_3395-cuadrada.jpg"
+        alt="Photo 2"
+        onclick="openModal(this.src)"
+        draggable="false"
+      />
+    </div>
+
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage" draggable="false" />
+      <div id="caption"></div>
+    </div>
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="images/Ramitalogoceci.png" alt="Footer Logo" />
+      </div>
+      <h4>Copyright © 2024 Cecilia Brein | Todos los derechos reservados.</h4>
+    </footer>
+
+    <script>
+      function openModal(imgSrc, imgAlt) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        var captionText = document.getElementById("caption");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+        captionText.innerHTML = imgAlt;
+      }
+
+      function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+      }
+
+      window.onclick = function (event) {
+        var modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      function toggleMenu() {
+        var navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+      }
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
+      // Modified touch event handlers
+      let touchStartTime;
+      let touchTimeout;
+
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          if (e.target.tagName === "IMG") {
+            touchStartTime = new Date().getTime();
+
+            // Clear any existing timeout
+            if (touchTimeout) {
+              clearTimeout(touchTimeout);
+            }
+
+            // Set a timeout for long press
+            touchTimeout = setTimeout(() => {
+              e.preventDefault();
+            }, 200); // Prevent long press after 200ms
+          }
+        },
+        { passive: false }
+      );
+
+      document.addEventListener("touchend", function (e) {
+        if (e.target.tagName === "IMG") {
+          // Clear the timeout
+          if (touchTimeout) {
+            clearTimeout(touchTimeout);
+          }
+
+          // Calculate touch duration
+          const touchDuration = new Date().getTime() - touchStartTime;
+
+          // If it's a quick tap (less than 200ms), allow the click event
+          if (touchDuration < 200) {
+            // Don't prevent default for quick taps
+            return true;
+          } else {
+            // Prevent default for long press
+            e.preventDefault();
+          }
+        }
+      });
+
+      // Keep your existing right-click prevention
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
+
+      // Keep your existing gesturestart prevention
+      document.addEventListener("gesturestart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>

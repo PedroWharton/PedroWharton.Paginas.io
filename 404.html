@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>404 - Page Not Found</title>
+    <script>
+      // Redirect to the correct URL without the .html extension
+      var pathSegments = location.pathname.split("/");
+      if (pathSegments[pathSegments.length - 1].endsWith(".html")) {
+        var newPath = pathSegments.slice(0, -1).join("/");
+        window.location.replace(newPath);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>404 - Page Not Found</h1>
+    <p>The page you're looking for doesn't exist.</p>
+  </body>
+</html>

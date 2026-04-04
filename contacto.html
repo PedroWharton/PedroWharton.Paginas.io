@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contacto</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/Logo_Completo_negro.png" />
+    <style>
+      /* Import fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap");
+
+      /* Global styles */
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "Lexend", sans-serif;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Header styles */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 24px;
+        background-color: aliceblue;
+        box-sizing: border-box;
+      }
+
+      .logo {
+        max-width: 120px;
+      }
+
+      /* Navigation styles */
+      .nav-bar ul {
+        display: flex;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+      }
+
+      .nav-bar a {
+        text-decoration: none;
+        padding: 12px;
+        color: black;
+        font-weight: 400;
+        font-size: 20px;
+        display: inline-block;
+        margin-right: 4px;
+      }
+
+      .boton-a {
+        padding: 0;
+      }
+
+      .boton {
+        padding: 16px;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        border: none;
+        font-weight: 600;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      /* Main content styles */
+      .main-container {
+        width: 100%;
+      }
+
+      .contact {
+        width: 90%;
+        margin: auto;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .profile-img {
+        max-width: 50%;
+      }
+
+      .description {
+        padding: 0 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .description h4 {
+        margin-top: 0;
+      }
+
+      .statement {
+        width: 90%;
+        margin: auto;
+        padding: 16px;
+      }
+
+      /* Social links styles */
+      .social-links {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .social-links a {
+        color: black;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: opacity 0.3s ease;
+      }
+
+      .social-links a:hover {
+        opacity: 0.7;
+      }
+
+      .social-links svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* Footer styles */
+      .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .footer-logo {
+        max-width: 160px;
+      }
+
+      .footer h4 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      /* Media Queries */
+      @media screen and (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo {
+          max-width: 80px;
+        }
+
+        .nav-bar {
+          width: 100%;
+          display: none;
+        }
+
+        .nav-bar.active {
+          display: block;
+        }
+
+        .nav-bar ul {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav-bar a {
+          width: 100%;
+          padding: 12px 0;
+        }
+
+        .menu-icon {
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+        }
+
+        .footer {
+          position: relative;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .footer-logo {
+          margin-bottom: 10px;
+        }
+
+        .footer h4 {
+          font-size: 14px;
+        }
+        .contact {
+          flex-direction: column;
+          padding: 12px;
+          gap: 24px;
+        }
+
+        .profile-img {
+          max-width: 100%;
+        }
+
+        .description {
+          padding: 0;
+          gap: 20px;
+        }
+
+        .description h4 {
+          font-size: 24px;
+          margin-bottom: 12px;
+        }
+
+        .description p {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+
+        .social-links {
+          margin-bottom: 12px;
+        }
+
+        .social-links a {
+          font-size: 14px;
+        }
+
+        .statement {
+          padding: 12px;
+        }
+
+        .photo-grid img:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <div class="logo">
+          <a href="/"
+            ><img src="images/Logo_Completo_negro.png" alt="Logo"
+          /></a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav class="nav-bar">
+          <ul>
+            <li><a href="paisajes">Paisajes</a></li>
+            <li><a href="flores">Flores</a></li>
+            <li><a href="blancoynegro">Blanco y Negro</a></li>
+            <li><a href="ciudades">Ciudades</a></li>
+            <li><a href="retratos">Retratos</a></li>
+            <li>
+              <a class="boton-a" href="contacto"
+                ><button class="boton">Contacto</button></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <div class="contact">
+        <div class="profile-img">
+          <img
+            src="images/Foto de perfil_MG_0183_Silver_Crop.jpg"
+            alt="Profile photo"
+          />
+        </div>
+        <div class="description">
+          <div>
+            <h4>Cecilia Brein</h4>
+            <p>
+              Nací en provincia de Buenos Aires en 1966. Desde 2004 resido en
+              Neuquén capital. Luego de recibirme y trabajar como geóloga me
+              inicié en la fotografía a fines de los 90. Los primeros pasos en
+              fotografía fueron en el Fotoclub Argentino donde hice fotografía
+              analógica. Tras un paréntesis en 2015 retomé estudios en
+              fotografía digital. Desde entonces estoy con una dedicación más
+              intensiva participando de varios cursos, foros y congresos.
+              Principalmente estoy dedicándome fotografía de paisajes, también
+              incursionando en fotografía de retrato y bodegones. Participé de
+              varias muestras colectivas en diferentes puntos del país (Córdoba,
+              Mar del Plata, Bahía Blanca, Neuquén, Pinta BAPhoto 2023 y 2024)
+            </p>
+          </div>
+
+          <div>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/ceciliabreinfotografia"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+                <span>@ceciliabreinfotografia</span>
+              </a>
+            </div>
+            <p>ceciliabrein@hotmail.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="statement">
+        <p>
+          Lo que me motiva a hacer Fotografía es capturar ese encantamiento que
+          me produce cuando convergen en una imagen, el conjunto de elementos de
+          la escena de belleza natural, junto al desafío constante de capturar,
+          además, la historia detrás de cada imagen. Y tomando citas de
+          Alexander Liberman, comparto la idea de hacer "una pausa", detenerse y
+          observar los detalles, los cuales son parte de la comunicación de la
+          visión. Y, a su vez, que el registro se convierte en un reflejo del
+          alma creativa del fotógrafo.
+        </p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="images/Ramitalogoceci.png" alt="Footer Logo" />
+      </div>
+      <h4>Copyright © 2024 Cecilia Brein | Todos los derechos reservados.</h4>
+    </footer>
+
+    <script>
+      // Store whether we're in a click/tap event
+      let isClickEvent = false;
+
+      // Handle modal opening
+      function openModal(imgSrc, imgAlt) {
+        isClickEvent = true;
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImage");
+        var captionText = document.getElementById("caption");
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+        captionText.innerHTML = imgAlt;
+        setTimeout(() => {
+          isClickEvent = false;
+        }, 100);
+      }
+
+      function closeModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+      }
+
+      function toggleMenu() {
+        var navBar = document.querySelector(".nav-bar");
+        navBar.classList.toggle("active");
+      }
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+        }
+      });
+
+      window.onclick = function (event) {
+        var modal = document.getElementById("imageModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      // Prevent right click
+      document.addEventListener("contextmenu", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Track touch start time for distinguishing taps from long presses
+      let touchStartTime = 0;
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          if (e.target.tagName === "IMG") {
+            touchStartTime = Date.now();
+          }
+        },
+        { passive: false }
+      );
+
+      // Handle touch end
+      document.addEventListener("touchend", function (e) {
+        if (e.target.tagName === "IMG") {
+          const touchDuration = Date.now() - touchStartTime;
+          if (touchDuration > 200) {
+            // If it's a long press
+            e.preventDefault();
+            return false;
+          }
+        }
+      });
+
+      // Additional protection for all possible download methods
+      document.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+          // Prevent Ctrl+S / Cmd+S
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Prevent drag events
+      document.addEventListener("dragstart", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Prevent touch events that might lead to saving
+      document.addEventListener(
+        "touchmove",
+        function (e) {
+          if (e.target.tagName === "IMG" && !isClickEvent) {
+            e.preventDefault();
+            return false;
+          }
+        },
+        { passive: false }
+      );
+
+      // Prevent copy
+      document.addEventListener("copy", function (e) {
+        if (e.target.tagName === "IMG") {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // Additional CSS to prevent selection and touch actions
+      const style = document.createElement("style");
+      style.textContent = `
+    img {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+    }
+    
+    img[onclick] {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+`;
+      document.head.appendChild(style);
+    </script>
+  </body>
+</html>
